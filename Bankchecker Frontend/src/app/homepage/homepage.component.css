@@ -142,6 +142,17 @@ body {
     vertical-align: middle;
     padding: 18px;
 }
+.fixed tbody{
+    border-top:1px solid grey;
+    border-bottom:1px solid gray;
+}
+.fixed  tbody tr{
+    border-top:none;
+    border-bottom:1px solid gray;
+}
+.fixed thead{
+    border-bottom: 2px solid grey;
+}
 
 .card {
     vertical-align: middle;

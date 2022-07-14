@@ -60,18 +60,18 @@
             </span>
           </div>
           <table class="table mytable" id="table">
-            <thead *ngIf="expenses.length>0 && searchExpensesForm.submitted" style ="border-bottom: 1px grey;border-top:1px grey;">
-              <tr style ="border-bottom: 1px grey;border-top:1px grey;">
-                <th class="border-gray fixed">Data</th>
-                <th class="border-gray fixed">Spesa</th>
-                <th class="border-gray fixed">Note</th>
+            <thead *ngIf="expenses.length>0 && searchExpensesForm.submitted" >
+              <tr >
+                <th >Data</th>
+                <th >Spesa</th>
+                <th >Note</th>
               </tr>
             </thead>
-            <tbody *ngFor="let expense of expenses" style ="border-bottom: 1px grey;border-top:1px grey;">
-              <tr (click)="onEditExpense(expense)" style ="border-bottom: 1px grey;border-top:1px grey;">
-                <td class="fixed">{{expense.date | date:'dd/MM/yyyy'}}</td>
-                <td class="fixed">{{expense.value}}€</td>
-                <td class="fixed">{{expense.notes}}</td>
+            <tbody *ngFor="let expense of expenses" >
+              <tr (click)="onEditExpense(expense)" >
+                <td >{{expense.date | date:'dd/MM/yyyy'}}</td>
+                <td >{{expense.value}}€</td>
+                <td >{{expense.notes}}</td>
               </tr>
             </tbody>
           </table>

@@ -2,7 +2,7 @@
     margin-left: 20px;
 }
 
-.fixed {
+.mytable td,th {
     text-align: center;
     vertical-align: middle;
     padding: 18px;
@@ -11,6 +11,18 @@
 .mytable {
     table-layout: fixed;
     width: 100%;
+}
+.mytable tbody{
+    border-top:1px solid grey;
+    border-bottom:1px solid gray;
+}
+.mytable tbody tr{
+    border-top:none;
+    border-bottom:1px solid gray;
+}
+
+.mytable thead{
+    border-bottom: 2px solid grey;
 }
 
 h1 {
