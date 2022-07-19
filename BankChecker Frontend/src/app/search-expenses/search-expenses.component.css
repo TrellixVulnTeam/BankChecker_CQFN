@@ -11,7 +11,18 @@
 .mytable {
     table-layout: fixed;
     width: 100%;
+    
 }
+
+.mytable td{
+    border-bottom:0.1px solid grey;
+    border-top:none;
+}
+.mytable th{
+    border-bottom:1.5px solid grey;
+}
+
+
 
 h1 {
     text-align: center;

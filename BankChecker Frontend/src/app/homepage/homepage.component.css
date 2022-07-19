@@ -141,6 +141,12 @@ body {
     width: 120px;
     vertical-align: middle;
     padding: 18px;
+    border-bottom:0.1px solid grey;
+    border-top:none;
+}
+
+.fixed th{
+    border-bottom:1.5px solid grey;
 }
 
 .card {
