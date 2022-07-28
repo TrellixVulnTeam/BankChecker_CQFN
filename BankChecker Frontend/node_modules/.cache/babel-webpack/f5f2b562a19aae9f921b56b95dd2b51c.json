@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const environment = {\n  production: true,\n  apiUrl: \"https://tomcatbankchecker.club/bankchecker\"\n};","map":null,"metadata":{},"sourceType":"module"}
