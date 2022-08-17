@@ -136,13 +136,18 @@ body {
 .logout {
     text-align: center;
 }
+.fixed {
+    text-align: center;
+    vertical-align: middle;
+    padding: 18px;
+}
 
 .fixed td {
     width: 120px;
     vertical-align: middle;
     padding: 18px;
-    border-bottom:0.1px solid grey;
-    border-top:none;
+    border-bottom:none;
+    border-top:0.1px solid grey;
 }
 
 .fixed th{
