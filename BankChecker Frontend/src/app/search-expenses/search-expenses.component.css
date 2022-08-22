@@ -31,3 +31,18 @@ h1 {
 .center {
     text-align: center;
 }
+.search-expense{
+ text-align: left;
+ vertical-align: middle;
+
+
+
+}
+.wrapper{
+    display: grid;
+    grid-template-rows: 1;
+    grid-template-columns: 1fr 2fr;
+}
+.button-search{
+  
+}

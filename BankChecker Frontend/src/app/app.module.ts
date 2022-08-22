@@ -14,6 +14,7 @@ import { NotificationModule } from './notification.module';
 import { FormsModule } from '@angular/forms';
 import { InsertExpenseComponent } from './insert-expense/insert-expense.component';
 import { SearchExpensesComponent } from './search-expenses/search-expenses.component';
+import { FullTextSearchPipe } from './search-expenses/FullTextSearchPipe'
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SearchExpensesComponent } from './search-expenses/search-expenses.compo
     LoginComponent,
     HomepageComponent,
     InsertExpenseComponent,
-    SearchExpensesComponent
+    SearchExpensesComponent,
+    FullTextSearchPipe
     
   ],
   imports: [

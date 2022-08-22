@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -16,6 +17,13 @@ export class AuthenticationGuard implements CanActivate {
     return this.isUserLoggedIn();
   }
   private isUserLoggedIn(): boolean {
+    this.authenticationService?.validateToken(localStorage.getItem("token")).pipe().subscribe(val=>{
+    },(error: HttpErrorResponse) =>{
+      localStorage.removeItem("token")
+      localStorage.removeItem("user")
+      
+    });
+   
     if (this.authenticationService.isLoggedIn()) {
       return true;
     }

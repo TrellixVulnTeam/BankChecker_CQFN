@@ -17,6 +17,7 @@ export class SearchExpensesComponent implements OnInit {
   public expensesLoaded: boolean = false;
   public expenses: Expense[] = [];
   public totExpenses: number = 0;
+  public query:string="";
   public editExpense: Expense=new Expense(0,new Date(),0,"",0);
   constructor(private notificationService: NotificationService, private expenseService: ExpenseService,
     private authenticationService: AuthenticationService, private router: Router) { }

@@ -25,7 +25,7 @@ export class ExpenseService {
   public insertExpense(expense: Expense): Observable<Expense> {
     return this.http.post<Expense>(this.host + "/api/v1/expense/addExpense", expense)
   }
-  updateExpense(expense: Expense):Observable<Expense> {
+  public updateExpense(expense: Expense):Observable<Expense> {
     return this.http.put<Expense>(this.host + "/api/v1/expense/updateExpense/", expense);
   }
 }

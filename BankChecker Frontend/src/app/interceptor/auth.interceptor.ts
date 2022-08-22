@@ -21,6 +21,8 @@ export class AuthInterceptor implements HttpInterceptor {
     var request = httpRequest.clone();
     if (localStorage.getItem("token") != null) {
       token = localStorage.getItem("token");
+    
+      
       request = httpRequest.clone({ setHeaders: { Authorization: "Bearer " + token } });
     }
     return httpHandler.handle(request);

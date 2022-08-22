@@ -21,6 +21,9 @@ export class AuthenticationService {
   public register(user: User): Observable<User> {
     return this.http.post<User>(this.host + "/api/v1/user/register", user);
   }
+  public validateToken(token: any): Observable<boolean> {
+    return this.http.get<boolean>(this.host + "/api/v1/user/validateToken?token="+token);
+  }
   public logout(): void {
     this.token = "";
     this.loggedInUsername = "";
