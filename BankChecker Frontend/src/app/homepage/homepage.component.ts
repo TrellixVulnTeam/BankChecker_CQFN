@@ -9,6 +9,8 @@ import { AuthenticationService } from '../service/authentication.service';
 import { ExpenseService } from '../service/expense.service';
 import { NotificationService } from '../service/notification.service';
 import { UserService } from '../service/user.service';
+import { DatePipe } from '@angular/common'
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -22,8 +24,9 @@ export class HomepageComponent implements OnInit {
   public totExpenseMonth: number = 0;
   public subscriptions: Subscription[] = [];
   public editExpense: Expense=new Expense(0,new Date(),0,"",0);
+  public dateObj: Date=new Date()
   constructor(private expenseService: ExpenseService, private userService: UserService, private notificationService: NotificationService,
-    private authenticationService: AuthenticationService, private router: Router) { }
+    private authenticationService: AuthenticationService, private router: Router,public datepipe: DatePipe) { }
   ngOnInit(): void {
     this.user = this.authenticationService.getUserFromLocalCache();
     this.getExpenses();
@@ -62,14 +65,19 @@ export class HomepageComponent implements OnInit {
   }
 
   public onEditExpense(editExpense:Expense):void{
-    document.getElementById('openUserInfo')?.click()
     this.editExpense=editExpense;
+    document.getElementById('openUserInfo')?.click()
+    this.dateObj=editExpense.date
+    console.log("Caricata : "+editExpense.date) 
     
+      
   }
 
-  public updateExpense():void{
+  public updateExpense(editExpense:Expense):void{
+    console.log("Inviata : "+ this.datepipe.transform(this.dateObj, "yyyy-MM-dd"))
+    this.editExpense.date=this.dateObj;
     this.editExpense.user_id=this.authenticationService.getUserFromLocalCache().id
-    this.expenseService.updateExpense( this.editExpense)
+    this.expenseService.updateExpense(editExpense)
     .subscribe((response:Expense)=>{
       console.log(response)
       this.notificationService.notify(NotificationType.SUCCESS, 'Aggiornamento completato correttamente.')

@@ -56,7 +56,7 @@
               </div>
               <div class="search-expense" *ngIf="searchExpensesForm.submitted">
                 <h6><div class="small text-muted" style="margin-bottom: 10px;">Ricerca Spesa per Testo :</div></h6>
-                <input type="text" [(ngModel)]="query" class="form-control" placeholder="Digita qui per cercare..."/>
+                <input type="text" [(ngModel)]="query" class="form-control" placeholder="Digita qui per cercare..." [ngModelOptions]="{standalone: true}"/>
               </div>
             </div>
             </form>
@@ -123,7 +123,7 @@
                                         <div >
                                           <div class="form-group">
                                             <label for="date"  style="padding:2px;margin-top:2px;"><h5>Data:</h5></label>    
-                                            <input  type="date" name="date" required  class="form-control" [ngModel]="editExpense.date">
+                                            <input  type="date"  (change)="dateObj = $any($event.target).valueAsDate" name="date" id="date" required  class="form-control" [(ngModel)]="editExpense.date" >
                                               <div class="form-group">
                                                 <label for="value" style="padding:2px;margin-top:8px;"><h5>Valore:</h5></label>   
                                                 <input  type="number" name="value" required  class="form-control" [(ngModel)]="editExpense.value">

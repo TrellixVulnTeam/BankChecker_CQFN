@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -18,9 +19,10 @@ export class SearchExpensesComponent implements OnInit {
   public expenses: Expense[] = [];
   public totExpenses: number = 0;
   public query:string="";
+  public dateObj:Date=new Date()
   public editExpense: Expense=new Expense(0,new Date(),0,"",0);
   constructor(private notificationService: NotificationService, private expenseService: ExpenseService,
-    private authenticationService: AuthenticationService, private router: Router) { }
+    private authenticationService: AuthenticationService, private router: Router,public datepipe: DatePipe) { }
   ngOnInit(): void {
     }
   public search(dateRangeForm: NgForm): void {
@@ -43,13 +45,18 @@ export class SearchExpensesComponent implements OnInit {
         })
   }
   public onEditExpense(editExpense:Expense):void{
-    document.getElementById('openUserInfo')?.click()
     this.editExpense=editExpense;
+    document.getElementById('openUserInfo')?.click()
+    console.log(this.datepipe.transform(editExpense.date,"dd/MM/yyyy","","en-EN"))
+    this.dateObj=editExpense.date
+    console.log("Caricata : "+this.dateObj) 
+    
     
   }
 
   public updateExpense():void{
     this.editExpense.user_id=this.authenticationService.getUserFromLocalCache().id
+    this.editExpense.date=this.dateObj;
     this.expenseService.updateExpense(this.editExpense)
     .subscribe((response:Expense)=>{
       console.log(response)
@@ -61,6 +68,7 @@ export class SearchExpensesComponent implements OnInit {
     this.expenses.forEach(element => {
       this.totExpenses += element.value
     });
+    this.expenses.sort((b, a) => new Date(b.date).getTime() - new Date(a.date).getTime());
     }
 
 }

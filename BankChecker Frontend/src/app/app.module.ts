@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { InsertExpenseComponent } from './insert-expense/insert-expense.component';
 import { SearchExpensesComponent } from './search-expenses/search-expenses.component';
 import { FullTextSearchPipe } from './search-expenses/FullTextSearchPipe'
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { FullTextSearchPipe } from './search-expenses/FullTextSearchPipe'
     
    
   ],
-  providers: [AuthenticationService, UserService, ExpenseService, NotificationService, {provide : HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [AuthenticationService, DatePipe, UserService, ExpenseService, NotificationService, {provide : HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
